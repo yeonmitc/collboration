@@ -1,0 +1,93 @@
+git remote add prcal <url>
+
+원격 저장소를 추가할 껀데 이름은 prcal 이고 주소는 url 야
+
+git remote  // 원격저장소 확인 
+
+git remote -v // 별명과 주소 전제 원격저장소 확인 
+
+git remote rm prcal  // 원격 저장소 삭제 
+
+git push -u prcal master 
+// 로컬 저장소에 있는 master 브랜치의 내용이
+prcal 이라고 하는 <url> 있는 원격 저장소로 저장 
+ -u 로 디폴트로 master 브랜치랑 연동하기 때문에 
+
+그래서 master 브랜치 수정하면 
+git commit -am "msg" 
+//하면 자동적으로 add 와 commit 이 되고
+git push // -u 인자때문제 자동으로 연동 
+
+// prcal에 업데이트 되는거 확인 가능하다 
+
+// pull // 갖고 합치기 
+git remote add prcal2 <url>
+
+//git pull 원격1 원격2
+
+git pull prcal master
+
+prcal 에 있는 내용을 master로 가져올꺼야 (master 브랜치로 동기화)
+
+// 누가 prcal(원격저장소)에 있는 내용을바꾼다면  
+
+// 다시 변경된 사항을 로컬에 저장하고 싶으면 로컬에서
+ git pull // 하면 된다 -u 옵션으로 자동으로 prcal 과 연동되어 있음 
+
+ fecth// 갖고만 오기 : 로컬 저장소에 영향은 안 받는다 
+
+$ git fetch prcal2 // 해서  우리가 연동된 다른 리파짓토리의 값을 
+// 가져만 왔기때문에
+
+//로컬의 master 브랜치에서는 변동 안된거 확인 가능 
+
+$ git brach  // 하면 현재 brach 정보를 가져온다 
+
+// 그럼 fetch한 브랜치 내용을 확인 하려면 특정 브랜치가 나오진 않지만 
+
+$ git checkout prcal2/master 
+
+이렇게 해도 되고 
+
+$ git checkout FETCH_HEAD  
+
+하면 볼 수 있다. 
+
+// clone 
+// 복사하고 싶은 url 다운로드 하면
+$git clone URL 하면 복사가 된다 
+
+
+협업의 세가지 시나리오
+
+내 로컬 저장소는 변했는데 원격 저장소는
+변함이 없는경우
+
+-- 그냥 코드 작성하고 push 하면 된다 
+
+내 로컬 저장소는 변함 없는데 원격 저장소는 
+변한경우
+
+-- git pull origin master  로 동기화를 해준다음에 
+코드를 작성해서 
+-- git push 하면 됨 
+
+내 로컬 자종소도 변했는데 원격 저장소도 변한 경우 
+
+1. rebase
+
+2. pull request 
+// 저장소의 변화 == 새로운 commit 이 생김 
+
+// 내가 새로운 변화를 만들었는데 내 코드를 받아줘!
+내코드를 원격저장소에 pull 해줘!
+// 원격저장소를 관리하는 사람이 승인을 해주면 
+marge 가 된다 
+
+
+// 나는 변함없고 원격이 변한경우 : pull & push
+
+// 나도 변햇고 원격도 변한 경우 : pull request
+
++ push 권한 주기 (팀원)
+
